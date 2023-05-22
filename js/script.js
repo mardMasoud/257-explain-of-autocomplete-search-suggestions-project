@@ -38,7 +38,7 @@ inputElm.addEventListener("keyup", function (e) {
  searchInput.classList.remove('active')
 
 let filterdItems = suggestions.filter(function (suggestion) {
-    return suggestion.includes(inputValue);
+    return suggestion.toLowerCase().includes(inputValue.toLowerCase());
   });
 
   let liItems = filterdItems.map(function (filterItem) {
@@ -55,7 +55,8 @@ let filterdItems = suggestions.filter(function (suggestion) {
   lis.forEach(function(l){
       l.addEventListener('click',function(e){
         
-          inputElm.value=e.target.innerHTML
+          inputElm.value=e.target.textContent
+          searchInput.classList.remove('active')
       })
      
   })
